@@ -1,0 +1,22 @@
+<script>
+var scriptContent = {{ shop.metafields.script.tellos | json }};
+    if (scriptContent) {
+      var scriptElement = document.createElement('script');
+      if (scriptContent.startsWith('http')) {
+        scriptElement.src = scriptContent;
+      } else {
+        scriptElement.innerHTML = scriptContent;
+      }
+      document.head.appendChild(scriptElement);
+    }
+</script>
+{% schema %}
+  {
+    "name": "Inject Tellos Script",
+    "target": "head",
+    "enabled_on": {
+    "templates": ["*"]
+  },
+    "settings": []
+  }
+{% endschema %}
